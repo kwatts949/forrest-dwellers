@@ -18,9 +18,9 @@ describe Application do
   # you can duplicate this test file to create a new one.
 
 
-  context 'GET /' do
+  context 'GET /home' do
     it 'should get the homepage' do
-      response = get('/')
+      response = get('/home')
 
       expect(response.status).to eq(200)
     end
