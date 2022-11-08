@@ -1,3 +1,136 @@
+
 body {
-    font-size: 18px;
+    font-family: 'Old Standard TT', serif;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+}
+
+h1, p {
+    text-align: center;
+}
+
+input {
+    margin: 0.25em 0em 1em 0em;
+    outline: none;
+    padding: 0.5em;
+    border: none;
+    background-color: rgb(225, 225, 225);
+    border-radius: 0.25em;
+    color:black;
+}
+
+button {
+    padding: 0.75em;
+    border: none;
+    outline: none;
+    background-color: rgb(68, 18, 232);
+    color: white;
+    border-radius: 0.25em;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: rgb(41, 4, 164);
+=======
+* {box-sizing: border-box;}
+
+body { 
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #efefef;
+  padding: 20px 10px;
+  margin-bottom: 20px;
+}
+
+.wrap-logo {
+  display: flex;
+  align-items: center;
+}
+
+header a {
+  color: #212121;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  border-radius: 4px;
+}
+
+header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+header a:hover {
+  background-color: #d1d1d1;
+  color: #212121;
+}
+
+header a.active {
+  background-color: #d1d1d1;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  }
+
+.spaces-container {
+    max-width: 70vw;
+    height: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+.spaces-item {
+    display: flex;
+    background-color: #fafafa;
+    height: 20vh;
+    min-width: 300px;
+    max-width: 600px;
+    border: 2px solid;
+    border-color: #d1d1d1;
+    flex-direction: column;
+    margin: 1vw auto;
+    padding: 1vw 2vh;
+}
+.space-content {
+    height: 6.4em;
+    overflow: hidden;
+    padding: 1vh 2vw;
+    text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 5;
+	-webkit-box-orient: vertical;
+}
+.space-item-header{
+    display: flex;
+    justify-content: space-between;
+    margin: auto 5vh;
+}
+
+.space-title, .space-price {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.space-describtion {
+    margin: 0 auto;
+    text-align: justify;
 }
