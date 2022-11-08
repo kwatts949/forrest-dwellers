@@ -12,40 +12,58 @@ end
   end
 
   context 'all method' do
-    it 'returns a list of all the spaces' do
+    it 'returns a list of all the users' do
       repo = UserRepository.new
 
-      users = repo.list 
-
+      users = repo.all 
       expect(users.length).to eq 4
       expect(users.first.id).to eq '1'
       expect(users.first.username).to eq "George"
       expect(users.last.email).to eq "henry@makers.com"
     end
   end
-=begin
+  
   context 'create method' do
-    xit 'creates a new space' do
-    repo = SpaceRepository.new
+    it 'creates a new user' do
+    repo = UserRepository.new
 
-    new_space = Space.new
-    new_space.space_name = 'Farm'
-    new_space.description = 'A bit smelly with lovely views'
-    new_space.price = '150'
-    new_space.user_id = 2
+    new_user = User.new
+    new_user.username = 'Sarah'
+    new_user.email = 'sarah@makers.com'
+    new_user.password = 'asdf'
     
-    repo.create(new_space)
+    repo.create(new_user)
 
-    all_spaces = repo.all
+    all_users = repo.all
 
-    expect(all_spaces).to include (
+    expect(all_users).to include (
       have_attributes(
-        space_name: new_space.space_name,
-        description: new_space.description,
-        price: new_space.price,
+        username: new_user.username,
+        email: new_user.email,
+        password: new_user.password,
       ))
     end
   end
-end
 
-=end
+  context 'find by email method' do
+    it 'finds a user by their email address' do
+      repo = UserRepository.new
+
+      result = repo.find_by_email('george@makers.com')
+
+      expect(result.password).to eq ('password')
+      expect(result.email).to eq ('george@makers.com')
+    end
+  end
+
+  context 'login method' do
+    it 'logs in the user' do 
+      repo = UserRepository.new
+
+      result1 = repo.login('george@makers.com', 'password')
+      result2 = repo.login('george@makers.com', 'asdf')
+      expect(result1).to eq true
+      expect(result2).to eq false
+    end
+  end
+end

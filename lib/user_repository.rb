@@ -1,4 +1,4 @@
-require_relative 'user'
+require_relative './user'
 require 'bcrypt'
 
 # store users class
@@ -6,59 +6,53 @@ class UserRepository
   # list out users
   # no arguments
 
-  def list
-    # sql request:
-    # SELECT id, author, email FROM users
-    sql = 'SELECT id, name, email, password FROM users'
+  def all
+    sql = 'SELECT id, username, email, password FROM users;'
     result_set = DatabaseConnection.exec_params(sql, [])
-
+    
     users = []
 
     result_set.each do |record|
-      user = create_user(record)
+      user = User.new
+      user.id = record['id']
+      user.username = record['username']
+      user.email = record['email']
+      user.password = record['password']
+
       users << user
     end
+    return users
+  end
 
-    users
-    # returns an array of users instances
-  end
-  
-  # add a new user to the repository
-  # one argument: User object
-  def add(user)
-    encrypted_password = BCrypt::Password.create(user.password)
-    # sql request:
-    # INSERT INTO users (author, email, password) VALUES ($1, $2, $3);
-    sql = 'INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id;'
-    sql_params = [user.name, user.email, encrypted_password]
-    result_set = DatabaseConnection.exec_params(sql, sql_params)
-    user_id = result_set[0]["id"]
-    user_id
-  end
 
   def find_by_email(email)
-    sql = 'SELECT * FROM users WHERE email = $1'
-    result_set = DatabaseConnection.exec_params(sql, [email])
-    user = create_user(result_set[0])
+    sql = 'SELECT * FROM users WHERE email = $1;'
+      result_set = DatabaseConnection.exec_params(sql, [email])
+      result_set = result_set[0]
 
-    user
+      user = User.new
+      user.id = result_set['id'].to_i
+      user.username = result_set['username']
+      user.email = result_set['email']
+      user.password = result_set['password']
+
+    return user
   end
 
-  def sign_in(email, submitted_password)
+  def login(email, submitted_password)
     user = find_by_email(email)
 
-    # return nil if user.nil?
-    return user if BCrypt::Password.new(user.password) == submitted_password
+    return nil if user.nil?
 
-    false
+    submitted_password == (user.password)
   end
 
-  def create_user(record)
-    user = User.new
-    user.id = record['id']
-    user.name = record['name']
-    user.email = record['email']
-    user.password = record['password']
-    user
+  def create(user)
+    sql = 'INSERT INTO users (username, email, password) VALUES ($1, $2, $3);'
+    sql_params = [user.username, user.email, user.password]
+
+    result_set = DatabaseConnection.exec_params(sql, sql_params)
+
+    return nil
   end
 end
