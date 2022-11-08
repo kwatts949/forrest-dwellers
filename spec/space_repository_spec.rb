@@ -46,4 +46,17 @@ end
       ))
     end
   end
+
+  context 'find method' do
+    it 'finds one space by its id' do
+      repo = SpaceRepository.new
+
+      space = repo.find(2)
+    
+      expect(space.id).to eq(2)
+      expect(space.space_name).to eq('Flat')
+      expect(space.description).to eq('Boring and unremarkable')
+      expect(space.price).to eq(120)
+    end
+  end
 end
