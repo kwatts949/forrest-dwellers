@@ -18,8 +18,9 @@ describe Application do
   # you can duplicate this test file to create a new one.
 
 
-  context 'GET /' do
+  context 'GET /home' do
     it 'should get the homepage' do
+      response = get('/home')
       response = get('/')
       expect(response.status).to eq(200)
     end
@@ -39,4 +40,15 @@ describe Application do
       expect(response.body).to include('<p class="space-describtion">Nice fireplace but cold outside</p>')
     end
   end
+
+  context 'GET /login' do
+    it 'should get the login page' do
+      response = get('/login')
+
+      expect(response.status).to eq(200)
+    end
+  end
+
+  context 'GET /login from / page' do
+    it 'should get the login page from home page'
 end

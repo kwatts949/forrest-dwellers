@@ -9,6 +9,9 @@ class Application < Sinatra::Base
     DatabaseConnection.connect('makersbnb_test')
   end
 
+  get '/home' do
+    return erb(:home)
+=======
   get '/' do
     return erb(:home)
   end
@@ -18,4 +21,9 @@ class Application < Sinatra::Base
     @spaces = repo.all
     return erb(:spaces)
   end
+
+  get '/login' do
+    return erb(:login)
+  end
+
 end
