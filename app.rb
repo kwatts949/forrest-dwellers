@@ -6,7 +6,7 @@ class Application < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  get '/' do
+  get '/home' do
     return erb(:home)
   end
 
