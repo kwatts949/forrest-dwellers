@@ -21,8 +21,22 @@ describe Application do
   context 'GET /' do
     it 'should get the homepage' do
       response = get('/')
-
       expect(response.status).to eq(200)
+    end
+  end
+
+  context 'GET /spaces' do
+    it 'should get spaces list page' do
+      response = get('/spaces')
+      expect(response.status).to eq(200)
+    end
+
+    it 'page should include first space' do
+      response = get('/spaces')
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<div class="space-title">Igloo</div>')
+      expect(response.body).to include('<div class="space-price">40£</div>')
+      expect(response.body).to include('<p class="space-describtion">Nice fireplace but cold outside</p>')
     end
   end
 end

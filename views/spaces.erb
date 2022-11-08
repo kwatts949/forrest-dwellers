@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="/style.css">
+      <title>MakersBnB</title>
+  </head>
+  <header>
+    <div class="wrap-logo">
+      <a href="#logo" class="logo">Our Logo</a>
+    </div>
+    <nav>
+      <a class="active" href="/spaces">Spaces</a>
+      <a href="#requests">Requests</a>
+      <a href="#sign_out">Sign out</a>
+    </nav>
+  </header>
+  <body>
+    <div class="spaces-container">
+      <div class="body-info">
+        <h1>Book a Space</h1>
+        <p>Here you can find spaces for rest</p>
+      </div>
+      <% @spaces.each do |space|%>
+        <div class="spaces-item">
+          <div class="space-item-header">
+            <div class="space-title"><%= space.space_name%></div>
+            <div class="space-price"><%= space.price%>£</div>
+          </div>
+          <div class="space-content">
+            <p class="space-describtion"><%=space.description%></p>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </body>
+</html>
