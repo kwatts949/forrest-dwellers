@@ -10,6 +10,8 @@ class Application < Sinatra::Base
     DatabaseConnection.connect('makersbnb_test')
   end
 
+  enable :sessions
+
   get '/home' do
     return erb(:home)
   end
@@ -38,13 +40,17 @@ class Application < Sinatra::Base
 
   post '/login' do
     repo = UserRepository.new
-    email = params[:email]
+    username = params[:username]
     password = params[:password]
-
+    p password
     user = repo.find_by_username(username)
 
+    p user.password == password
     if user.password == password
-      return erb[:spaces]
+      session[:user_id] = user.id
+      return erb(:spaces)
+    else
+      return erb(:failure)
     end
   end
 end

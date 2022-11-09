@@ -26,7 +26,6 @@ describe Application do
   context 'GET /home' do
     it 'should get the homepage' do
       response = get('/home')
-      response = get('/')
       expect(response.status).to eq(200)
     end
   end
@@ -59,6 +58,15 @@ describe Application do
       response = post('/home', username: "asdf", email: "asdf@email.com", password: "Makers")
       expect(response.status).to eq(200)
       expect(response.body).to include('<p> You have successfully signed up! </p>')
+    end
+  end
+
+  context 'POST /login' do
+    xit 'should successfully login and redirect to spaces page' do
+      response = post('/login', username: 'Kay', password: '1234')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<h1>Book a Space</h1>')
     end
   end
 end
