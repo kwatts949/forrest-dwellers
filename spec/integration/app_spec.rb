@@ -54,10 +54,6 @@ describe Application do
     end
   end
 
-  context 'GET /login from / page' do
-    xit 'should get the login page from home page'
-  end
-
   context 'POST /home creates a new user' do
     it 'should create a new user in the table' do
       response = post('/home', username: "asdf", email: "asdf@email.com", password: "Makers")
