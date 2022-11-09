@@ -21,7 +21,7 @@
     <h1>Forrest Dwellers</h1>
     <p>Welcome to Forrest Dwellers!  Sign up below to stay at your perfect habitat!<p>
     <body>
-    <form>
+        <form method='POST' action='/home'>
         <div>
             <label for="username"><b>Username</b></label>
             <input 
@@ -47,19 +47,11 @@
                 id="pwd"
                 required
             />
-            <label for="pwd-repeat"><b>Repeat Password</b></label>
-            <input
-                type="password"
-                placeholder="Repeat Password"
-                name="pwd-repeat"
-                id="pwd-repeat"
-                required
-            />
-            <button type="submit">Register</button>
+            <button type="submit"><a href="/user_created">Register</a></button>
         </div>
         <div>
             <p>Already have an account? <a href="/login">Log in</a>.</p>
         </div>
         <div></div>
-    <form>
+    </form>
 <html>

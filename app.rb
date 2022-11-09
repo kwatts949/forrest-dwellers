@@ -11,7 +11,8 @@ class Application < Sinatra::Base
 
   get '/home' do
     return erb(:home)
-=======
+  end
+
   get '/' do
     return erb(:home)
   end
@@ -25,5 +26,20 @@ class Application < Sinatra::Base
   get '/login' do
     return erb(:login)
   end
+=begin
+  get '/user_created'
+    return erb(:user_created)
+  end
+=end
+  post '/home' do
+    repo = UserRepository.new
+    @user = User.new
+    @user.username = params[:username]
+    @user.email = params[:email]
+    @user.password = params[:password]
 
+    repo.create(@user)
+
+    return erb(:user_created)
+  end
 end

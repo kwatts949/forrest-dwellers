@@ -1,5 +1,4 @@
 require_relative './user'
-require 'bcrypt'
 
 # store users class
 class UserRepository

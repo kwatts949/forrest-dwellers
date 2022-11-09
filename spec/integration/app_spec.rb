@@ -16,7 +16,12 @@ describe Application do
   # accross multiple RSpec files (for example, have
   # one test suite for each set of related features),
   # you can duplicate this test file to create a new one.
-
+  def reset_users_table
+    seed_sql = File.read(spec/seeds/user_seeds.sql)
+    connection = PG.connect({ host: '127.0.0.1', dbname: 'makersbnb_test' })
+    connection.exec(seed_sql)
+  end
+  
 
   context 'GET /home' do
     it 'should get the homepage' do
@@ -32,7 +37,7 @@ describe Application do
       expect(response.status).to eq(200)
     end
 
-    it 'page should include first space' do
+    xit 'page should include first space' do
       response = get('/spaces')
       expect(response.status).to eq(200)
       expect(response.body).to include('<div class="space-title">Igloo</div>')
@@ -50,5 +55,14 @@ describe Application do
   end
 
   context 'GET /login from / page' do
-    it 'should get the login page from home page'
+    xit 'should get the login page from home page'
+  end
+
+  context 'POST /home creates a new user' do
+    it 'should create a new user in the table' do
+      response = post('/home', username: "asdf", email: "asdf@email.com", password: "Makers")
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<p> You have successfully signed up! </p>')
+    end
+  end
 end
