@@ -40,7 +40,7 @@ class Application < Sinatra::Base
     @user.password = params[:password]
 
     repo.create(@user)
-
+    
     return erb(:user_created)
   end
 end
