@@ -17,6 +17,15 @@ describe Application do
   # one test suite for each set of related features),
   # you can duplicate this test file to create a new one.
 
+  def reset_spaces_table
+    seed_sql = File.read('seeds/spaces_seeds.sql')
+    connection = PG.connect({ host: '127.0.0.1', dbname: 'makersbnb_test' })
+    connection.exec(seed_sql)
+  end
+
+  before(:each) do 
+    reset_spaces_table
+  end
 
   context 'GET /home' do
     it 'should get the homepage' do
@@ -49,6 +58,13 @@ describe Application do
     end
   end
 
-  context 'GET /login from / page' do
-    it 'should get the login page from home page'
+  context 'GET /spaces:id' do
+    it 'should return 200 OK and page for 1st space' do
+      response = get('/spaces/1')
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<div class="space-title">Igloo</div>')
+      expect(response.body).to include('<div class="space-price">40£</div>')
+      expect(response.body).to include('<p class="space-describtion">Nice fireplace but cold outside</p>')
+    end
+  end
 end
