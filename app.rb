@@ -35,4 +35,16 @@ class Application < Sinatra::Base
     
     return erb(:user_created)
   end
+
+  post '/login' do
+    repo = UserRepository.new
+    email = params[:email]
+    password = params[:password]
+
+    user = repo.find_by_username(username)
+
+    if user.password == password
+      return erb[:spaces]
+    end
+  end
 end
