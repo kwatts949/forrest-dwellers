@@ -1,5 +1,4 @@
 require_relative './user'
-require 'bcrypt'
 
 # store users class
 class UserRepository
@@ -39,13 +38,28 @@ class UserRepository
     return user
   end
 
-  def login(email, submitted_password)
-    user = find_by_email(email)
+  def find_by_username(username)
+    sql = 'SELECT id, username, email, password FROM users WHERE username = $1;'
+      result_set = DatabaseConnection.exec_params(sql, [username])
+      result_set = result_set[0]
+
+      user = User.new
+      user.id = result_set['id'].to_i
+      user.username = result_set['username']
+      user.email = result_set['email']
+      user.password = result_set['password']
+
+    return user
+  end
+
+  def login(username, submitted_password)
+    user = find_by_username(username)
 
     return nil if user.nil?
 
     submitted_password == (user.password)
   end
+
 
   def create(user)
     sql = 'INSERT INTO users (username, email, password) VALUES ($1, $2, $3);'

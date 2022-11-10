@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 
 <html lang="en">
     <head>
@@ -12,16 +12,12 @@
     <body>
         <h1>Welcome to Forrest Dwellers!</h1>
         <p> Sign up below to stay at your perfect habitat!<p>
-    </body>
     <form>
         <div class="container">
-<html>
-    <head></head>
-    <body>
-    <h1>Forrest Dwellers</h1>
-    <p>Welcome to Forrest Dwellers!  Sign up below to stay at your perfect habitat!<p>
-    <body>
-    <form>
+
+        <h1>Forrest Dwellers</h1>
+        <p>Welcome to Forrest Dwellers!  Sign up below to stay at your perfect habitat!<p>
+        <form action='/home' method='POST'>
         <div>
             <label for="username"><b>Username</b></label>
             <input 
@@ -29,37 +25,27 @@
                 placeholder="Enter username"
                 name="username"
                 id="username"
-                required
-            />
+                required>
             <label for="email"><b>Email</b></label>
             <input
                 type="text"
                 placeholder="Enter Email"
                 name="email"
                 id="email"
-                required
-            />
+                required>
             <label for="pwd"><b>Password</b></label>
             <input
                 type="password"
                 placeholder="Enter Password"
-                name="pwd"
+                name="password"
                 id="pwd"
-                required
-            />
-            <label for="pwd-repeat"><b>Repeat Password</b></label>
-            <input
-                type="password"
-                placeholder="Repeat Password"
-                name="pwd-repeat"
-                id="pwd-repeat"
-                required
-            />
-            <button type="submit">Register</button>
-        </div>
-        <div>
-            <p>Already have an account? <a href="/login">Log in</a>.</p>
-        </div>
-        <div></div>
-    <form>
-<html>
+                required>
+            </div>
+                <input type="submit"/>
+            <div>
+                <p>Already have an account? <a href="/login">Log in</a>.</p>
+            </div>
+            <div></div>
+        </form>
+    </body>
+<html>             

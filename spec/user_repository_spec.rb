@@ -60,10 +60,21 @@ end
     it 'logs in the user' do 
       repo = UserRepository.new
 
-      result1 = repo.login('george@makers.com', 'password')
-      result2 = repo.login('george@makers.com', 'asdf')
+      result1 = repo.login('George', 'password')
+      result2 = repo.login('George', 'asdf')
       expect(result1).to eq true
       expect(result2).to eq false
+    end
+  end
+
+  context 'find by username method' do
+    it 'finds a user by their username' do
+      repo = UserRepository.new
+
+      result = repo.find_by_username('George')
+
+      expect(result.password).to eq ('password')
+      expect(result.email).to eq ('george@makers.com')
     end
   end
 end

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <meta charset=utf-8>
+    <title>Forrest Dwellers!</title>
+  </head>
+  <body>
+     <h1>Welcome to Forrest Dwellers!</h1>
+        <p> Sign up below to stay at your perfect habitat!<p>
+    <form method="POST" action="/create_user">
+      <div class="container">
+        <label>Username</label>
+        <input type="text" name="username" required/>
+
+        <label>Email</label>
+        <input type="text" name="email" required/>
+      
+        <label>Password</label>
+        <input type="password" name="password" required/>
+      </div>
+        <button type="submit">Create</button>
+      <p>Already have an account? <a href="/login">Log in</a></p>
+    </form>
+  </body
+</html>
