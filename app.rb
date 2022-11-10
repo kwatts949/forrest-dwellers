@@ -12,6 +12,10 @@ class Application < Sinatra::Base
 
   enable :sessions
 
+  get '/' do
+    return erb(:index)
+  end
+
   get '/home' do
     return erb(:home)
   end

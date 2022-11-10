@@ -57,7 +57,7 @@ describe Application do
     it 'should create a new user in the table' do
       response = post('/home', username: "asdf", email: "asdf@email.com", password: "Makers")
       expect(response.status).to eq(200)
-      expect(response.body).to include('Success!')
+      expect(response.body).to include("Success!")
     end
   end
 
