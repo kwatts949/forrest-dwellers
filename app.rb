@@ -16,8 +16,8 @@ class Application < Sinatra::Base
     return erb(:index)
   end
 
-  get '/home' do
-    return erb(:home)
+  get '/create_user' do
+    return erb(:create_user)
   end
 
   get '/login' do
@@ -30,7 +30,7 @@ class Application < Sinatra::Base
     return erb(:spaces)
   end
 
-  post '/home' do
+  post '/create_user' do
     repo = UserRepository.new
     @user = User.new
     @user.username = params[:username]
@@ -52,9 +52,5 @@ class Application < Sinatra::Base
     else
       return erb(:failure)
     end
-  end
-
-  post '/' do
-    return erb(:home)
   end
 end

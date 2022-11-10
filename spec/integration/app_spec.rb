@@ -23,9 +23,16 @@ describe Application do
   end
   
 
-  context 'GET /home' do
+  context 'GET /' do
     it 'should get the homepage' do
-      response = get('/home')
+      response = get('/')
+      expect(response.status).to eq(200)
+    end
+  end
+
+  context 'GET /create_user' do
+    it 'should get the create user page' do
+      response = get('/create_user')
       expect(response.status).to eq(200)
     end
   end
@@ -35,27 +42,28 @@ describe Application do
       response = get('/spaces')
       expect(response.status).to eq(200)
     end
+  end
 
-    xit 'page should include first space' do
+  context 'GET /login' do
+    it 'should get the login page' do
+      response = get('/login')
+      expect(response.status).to eq(200)
+    end
+  end
+
+=begin
+    it 'page should include first space' do
       response = get('/spaces')
       expect(response.status).to eq(200)
       expect(response.body).to include('<div class="space-title">Igloo</div>')
       expect(response.body).to include('<div class="space-price">40£</div>')
       expect(response.body).to include('<p class="space-describtion">Nice fireplace but cold outside</p>')
     end
-  end
+=end
 
-  context 'GET /login' do
-    it 'should get the login page' do
-      response = get('/login')
-
-      expect(response.status).to eq(200)
-    end
-  end
-
-  context 'POST /home creates a new user' do
+  context 'POST /create_user creates a new user' do
     it 'should create a new user in the table' do
-      response = post('/home', username: "asdf", email: "asdf@email.com", password: "Makers")
+      response = post('/create_user', username: "asdf", email: "asdf@email.com", password: "Makers")
       expect(response.status).to eq(200)
       expect(response.body).to include("Success!")
     end
@@ -64,7 +72,6 @@ describe Application do
   context 'POST /login' do
     it 'should successfully login and redirect to spaces page' do
       response = post('/login', username: 'Kay', password: '1234')
-
       expect(response.status).to eq(200)
       expect(response.body).to include("Success!")
     end
