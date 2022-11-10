@@ -21,10 +21,23 @@
         <h1>Book a Space</h1>
         <p>Here you can find spaces for rest</p>
       </div>
+      <div>
+        <form class="spaces-form" name="add_space" action="/space_form" method="GET">
+          <label>You can add your space to rent!</label>
+          <input type="submit" value="Add space"/>
+        </form>
+        <form class="spaces-form" name="dates" action="/spaces_search" method="GET">
+          <label>Avalible from:</label>
+          <input type="date" name="date_for"/>
+          <label>Avalible to:</label>
+          <input type="date" name="date_to"/>
+          <input type="submit" value="Check"/>
+        </form>
+      </div>
       <% @spaces.each do |space|%>
         <div class="spaces-item">
           <div class="space-item-header">
-            <div class="space-title"><%= space.space_name%></div>
+            <a href="spaces/<%=space.id%>"><div class="space-title"><%= space.space_name%></div></a>
             <div class="space-price"><%= space.price%>£</div>
           </div>
           <div class="space-content">
