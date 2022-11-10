@@ -20,14 +20,14 @@ class Application < Sinatra::Base
     return erb(:home)
   end
 
+  get '/login' do
+    return erb(:login)
+  end
+
   get '/spaces' do
     repo = SpaceRepository.new
     @spaces = repo.all
     return erb(:spaces)
-  end
-
-  get '/login' do
-    return erb(:login)
   end
 
   post '/home' do
@@ -48,10 +48,13 @@ class Application < Sinatra::Base
     password = params[:password]
     user = repo.find_by_username(username)
     if user.password == password
-      session[:user_id] = user.id
       return erb(:redirect)
     else
       return erb(:failure)
     end
+  end
+
+  post '/' do
+    return erb(:home)
   end
 end

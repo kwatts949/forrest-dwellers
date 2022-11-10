@@ -12,18 +12,23 @@
     </head>
     <body>
         <h1>Welcome to Forrest Dwellers!</h1>
-    <form>
         <div class="container">
         <p>Welcome to Forrest Dwellers!  Choose from options below:<p>
         <div class="container">
-            <label for="create"><b>If you are new, click here to sign up!</b></label>
-            <button type="submit">Create</button>
+            <form method='GET' action="/home">
+                <label for="create"><b>If you are new, click here to sign up!</b></label>
+                <button type="submit">Create</button>
+            </form>
 
-            <label for="log in"><b>If you already have an account, click here!</b></label>
-            <button type="submit">Log in</button>
+            <form method='GET' action="/login">
+                <label for="log in"><b>If you already have an account, click here!</b></label>
+                <button type="submit">Log in</button>
+            </form>
 
-            <label for="spaces"><b>If you want to check out our habitats, click here!</b></label>
-            <button type="submit">Explore</button>
-            <div></div>
+            <form method='GET' action="/spaces">
+                <label for="spaces"><b>If you want to check out our habitats, click here!</b></label>
+                <button type="submit">Explore</button>
+            </form>
+        </div>
     </body>
 <html>             
