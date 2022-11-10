@@ -30,7 +30,18 @@
         </div>
       </div>
       <div class="spaces-booking">
-        
+        <form class="spaces-form" action="/spaces/book" name="book_day" method="POST">
+          <label>Avalible dates:</label>
+          <select name='booking_date' required>
+            <%@days.each do |day|%>
+              <option value="<%=day%>"><%=day%></option>
+            <%end%>
+          </select>
+          <input class="hidden" type="hidden" name = "space_id" value="<%=@space.id%>"/>
+          <input class="hidden" type="hidden" name = "user_id" value="<%=1%>"/>
+          <label class="space-price">Price: <%= @space.price%>£</label>
+          <input type="submit" value="Book"/>
+        </form>
       </div>
     </div>
   </body>

@@ -10,33 +10,21 @@
       <a href="#logo" class="logo">Our Logo</a>
     </div>
     <nav>
-      <a class="active" href="/spaces">Spaces</a>
-      <a href="/requests/1">Requests</a>
+      <a href="/spaces">Spaces</a>
+      <a class="active" href="/requests">Requests</a>
       <a href="#sign_out">Sign out</a>
     </nav>
   </header>
   <body>
     <div class="spaces-container">
       <div class="body-info">
-        <h1>Book a Space</h1>
-        <p>Here you can find spaces for rest</p>
+        <h1>Your own spaces</h1>
+        <p>Here you can find requests for rent</p>
       </div>
       <div>
-        <form class="spaces-form" name="add_space" action="/space_form" method="GET">
-          <label>You can add your space to rent!</label>
-          <input type="submit" value="Add space"/>
-        </form>
-        <form class="spaces-form" name="dates" action="/spaces/search" method="GET">
-          <label>Avalible from:</label>
-          <input type="date" name="start_date" min='<%=@today%>'/>
-          <label>Avalible to:</label>
-          <input type="date" name="end_date" min='<%=@tomorrow%>'/>
-          <input type="submit" value="Check"/>
-        </form>
-      </div>
       <%if @spaces.empty?%>
         <h1>Sorry</h1>
-        <p>We do not have offers for these dates</p>
+        <p>You do not have any spaces</p>
       <%end%>
       <% @spaces.each do |space|%>
         <div class="spaces-item">
