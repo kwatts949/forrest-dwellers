@@ -57,7 +57,7 @@ describe Application do
     it 'should create a new user in the table' do
       response = post('/home', username: "asdf", email: "asdf@email.com", password: "Makers")
       expect(response.status).to eq(200)
-      expect(response.body).to include('<p> You have successfully signed up! </p>')
+      expect(response.body).to include('Success!')
     end
   end
 
@@ -66,7 +66,7 @@ describe Application do
       response = post('/login', username: 'Kay', password: '1234')
 
       expect(response.status).to eq(200)
-      expect(response.body).to include('<h1>Book a Space</h1>')
+      expect(response.body).to include("Success!")
     end
   end
 end

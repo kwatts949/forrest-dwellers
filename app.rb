@@ -35,20 +35,17 @@ class Application < Sinatra::Base
 
     repo.create(@user)
     
-    return erb(:user_created)
+    return erb(:redirect)
   end
 
   post '/login' do
     repo = UserRepository.new
     username = params[:username]
     password = params[:password]
-    p password
     user = repo.find_by_username(username)
-    p user.password
-    p user.password == password
     if user.password == password
       session[:user_id] = user.id
-      return erb(:spaces)
+      return erb(:redirect)
     else
       return erb(:failure)
     end
