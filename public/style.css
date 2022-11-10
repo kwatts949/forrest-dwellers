@@ -41,8 +41,7 @@ button {
 button:hover {
     cursor: pointer;
     background-color: rgb(41, 4, 164);
-=======
-* {box-sizing: border-box;}
+}
 
 body { 
   margin: 0;
@@ -121,6 +120,7 @@ nav {
 }
 .space-item-header{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     margin: auto 5vh;
 }
@@ -133,4 +133,48 @@ nav {
 .space-describtion {
     margin: 0 auto;
     text-align: justify;
+}
+
+.spaces-form {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    justify-content:space-between;
+    width: 100%;
+    max-width: 600px;
+}
+
+.space-add {
+    background-color: #fafafa;
+    border: 2px solid;
+    border-color: #d1d1d1;
+    min-width: 180px;
+    max-width: 30vw;
+    margin: 1vw auto;
+    padding: 1vw 2vh;
+}
+
+.space-add-form input {
+    width: 80%;
+}
+
+.space-add-form textarea {
+    width: 80%;
+    height: 10vw;
+    background-color: #efefef;
+}
+
+@media (max-width: 700px) {
+    .spaces-form {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 500px) {
+    .space-item-header {
+        flex-direction: column;
+    }
+    .spaces-item {
+        min-width: 180px;
+    }
 }
