@@ -1,15 +1,34 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>MakersBnB</title>
 
-        <!--
-            Head to https://github.com/makersacademy/web-applications/blob/main/pills/loading_css_or_static_files.md
-            If you're wondering how the CSS file below is being loaded.
-        -->
-        <link rel="stylesheet" href="/style.css" >
+<html lang="en">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+        <meta charset=utf-8>
+        <title>Forrest Dwellers</title>
     </head>
-    <body>
-        <p>This is the homepage.</h1>
+    <body class="background">  
+        <h1>Welcome to Forrest Dwellers!</h1>
+      
+        <div class="spaces-container">
+        <p>Welcome to Forrest Dwellers!  Choose from options below:<p>
+        <div class="space-add">
+            <form method='GET' action="/create_user">
+                <label for="create"><b>If you are new, click here to sign up!</b></label><br>
+                <button type="submit">Create</button>
+            </form><br>
+
+            <form method='GET' action="/login">
+                <label for="log in"><b>If you already have an account, click here!</b></label><br>
+                <button type="submit">Log in</button>
+            </form><br>
+
+            <form method='GET' action="/spaces">
+                <label for="spaces"><b>If you want to check out our habitats, click here!</b></label><br>
+                <button type="submit">Explore</button>
+            </form>
+        </div>
     </body>
-</html>
+<html>             

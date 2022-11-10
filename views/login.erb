@@ -9,11 +9,11 @@
         <meta charset=utf-8>
         <title>Forrest Dwellers</title>
     </head>
-    <body>
+    <body class="background">
         <h1>Welcome back to Forrest Dwellers!</h1>
         <p> Sign in to find your perfect habitat!</p>
     </body>
-    <form>
+    <form method="POST" action="/login">
         <div class="container">
             <label for="username"><b>Username</b></label>
                 <input 
@@ -27,14 +27,14 @@
             <input
                 type="password"
                 placeholder="Enter Password"
-                name="pwd"
+                name="password"
                 id="pwd"
                 required
             />
             <button type="submit">Login</button>
         </div>
         <div>
-            <p>Don't have an account? <a href="/home">Log in</a>.</p>
+            <p>Don't have an account? <a href="/create_user">Create account</a>.</p>
         </div>
     </form>
 <html>

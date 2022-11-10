@@ -3,6 +3,7 @@ require 'sinatra/reloader'
 require 'date'
 require_relative './lib/database_connection'
 require_relative './lib/space_repository'
+require_relative './lib/user_repository'
 require_relative './lib/space'
 require_relative './lib/booking_repository'
 
@@ -12,12 +13,18 @@ class Application < Sinatra::Base
     DatabaseConnection.connect('makersbnb_test')
   end
 
-  get '/home' do
-    return erb(:home)
-  end
-  
+  enable :sessions
+
   get '/' do
-    return erb(:home)
+    return erb(:index)
+  end
+
+  get '/create_user' do
+    return erb(:create_user)
+  end
+
+  get '/login' do
+    return erb(:login)
   end
 
   get '/spaces' do
@@ -28,8 +35,28 @@ class Application < Sinatra::Base
     return erb(:spaces)
   end
 
-  get '/login' do
-    return erb(:login)
+  post '/create_user' do
+    repo = UserRepository.new
+    @user = User.new
+    @user.username = params[:username]
+    @user.email = params[:email]
+    @user.password = params[:password]
+
+    repo.create(@user)
+    
+    return erb(:redirect)
+  end
+
+  post '/login' do
+    repo = UserRepository.new
+    username = params[:username]
+    password = params[:password]
+    user = repo.find_by_username(username)
+    if user.password == password
+      return erb(:redirect)
+    else
+      return erb(:failure)
+    end
   end
 
   get '/spaces/search' do
@@ -110,4 +137,5 @@ class Application < Sinatra::Base
     end
     return date1, date2
   end
+
 end
