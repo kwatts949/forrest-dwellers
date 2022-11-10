@@ -44,7 +44,7 @@ class Application < Sinatra::Base
     password = params[:password]
     p password
     user = repo.find_by_username(username)
-
+    p user.password
     p user.password == password
     if user.password == password
       session[:user_id] = user.id

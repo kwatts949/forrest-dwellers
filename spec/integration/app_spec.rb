@@ -62,7 +62,7 @@ describe Application do
   end
 
   context 'POST /login' do
-    xit 'should successfully login and redirect to spaces page' do
+    it 'should successfully login and redirect to spaces page' do
       response = post('/login', username: 'Kay', password: '1234')
 
       expect(response.status).to eq(200)

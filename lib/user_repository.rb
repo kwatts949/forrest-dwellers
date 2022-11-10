@@ -52,12 +52,12 @@ class UserRepository
     return user
   end
 
-  def login(username, password)
+  def login(username, submitted_password)
     user = find_by_username(username)
 
     return nil if user.nil?
 
-    password == (user.password)
+    submitted_password == (user.password)
   end
 
 
