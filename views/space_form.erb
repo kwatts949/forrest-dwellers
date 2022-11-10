@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="/style.css">
+      <title>MakersBnB</title>
+  </head>
+  <header>
+    <div class="wrap-logo">
+      <a href="#logo" class="logo">Our Logo</a>
+    </div>
+    <nav>
+      <a href="/spaces">Spaces</a>
+      <a href="#requests">Requests</a>
+      <a href="#sign_out">Sign out</a>
+    </nav>
+  </header>
+  <body>
+    <div class="spaces-container">
+      <div class="body-info">
+        <h1>List a space</h1>
+      </div>
+      <div class="space-add">
+        <form class="space-add-form" name="new_space" action="/add_space" method="POST">
+          <label>Name:</label>
+          <input type="text" name="space_name" required/>
+          <label>Description:</label>
+          <textarea type="text" name="space_description" required></textarea>
+          <label>Price per night (£):</label>
+          <input type="text" name="space_price" required/>
+          <label>Avalible from:</label>
+          <input type="date" name="date_for" required/>
+          <label>Avalible to:</label>
+          <input type="date" name="date_to" required/>
+          <input type="submit" value="Add space">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
