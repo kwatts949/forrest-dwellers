@@ -12,6 +12,7 @@ form {
     display: flex;
     flex-direction: column;
     width: 25vw;
+    text-align: center;
 }
 
 h1, p {
@@ -177,4 +178,10 @@ nav {
     .spaces-item {
         min-width: 180px;
     }
+}
+
+.background {
+    background-image: url("forrest_gump_page.jpeg");
+    max-width: 100%;
+    margin: auto;
 }

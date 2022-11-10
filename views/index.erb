@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 
 <html lang="en">
     <head>
@@ -10,23 +9,24 @@
         <meta charset=utf-8>
         <title>Forrest Dwellers</title>
     </head>
-    <body>
+    <body class="background">  
         <h1>Welcome to Forrest Dwellers!</h1>
-        <div class="container">
+      
+        <div class="spaces-container">
         <p>Welcome to Forrest Dwellers!  Choose from options below:<p>
-        <div class="container">
+        <div class="space-add">
             <form method='GET' action="/create_user">
-                <label for="create"><b>If you are new, click here to sign up!</b></label>
+                <label for="create"><b>If you are new, click here to sign up!</b></label><br>
                 <button type="submit">Create</button>
-            </form>
+            </form><br>
 
             <form method='GET' action="/login">
-                <label for="log in"><b>If you already have an account, click here!</b></label>
+                <label for="log in"><b>If you already have an account, click here!</b></label><br>
                 <button type="submit">Log in</button>
-            </form>
+            </form><br>
 
             <form method='GET' action="/spaces">
-                <label for="spaces"><b>If you want to check out our habitats, click here!</b></label>
+                <label for="spaces"><b>If you want to check out our habitats, click here!</b></label><br>
                 <button type="submit">Explore</button>
             </form>
         </div>
