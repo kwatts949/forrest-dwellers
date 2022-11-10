@@ -10,6 +10,6 @@ user_id int,
 constraint fk_user foreign key(user_id) references users(id) on delete cascade
 );
 
-CREATE TABLE bookings ( id SERIAL PRIMARY KEY, booking_date date, space_id int, 
+CREATE TABLE bookings ( id SERIAL PRIMARY KEY, booking_date date, space_id int, confirmation boolean,
 constraint fk_space foreign key(space_id) references spaces(id) on delete cascade
 );
