@@ -1,5 +1,5 @@
 CREATE TABLE users ( id SERIAL PRIMARY KEY, username text,
-date text,
+email text,
 password varchar
 );
 
@@ -13,6 +13,6 @@ constraint fk_user foreign key(user_id) references users(id) on delete cascade
 );
 
 
-CREATE TABLE bookings ( id SERIAL PRIMARY KEY, booking_date date, space_id int, user_id int, confirmation boolean
+CREATE TABLE bookings ( id SERIAL PRIMARY KEY, booking_date date, space_id int, user_id int, confirmation boolean,
 constraint fk_space foreign key(space_id) references spaces(id) on delete cascade
 );
