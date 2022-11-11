@@ -53,6 +53,7 @@ class Application < Sinatra::Base
     password = params[:password]
     user = repo.find_by_username(username)
     if user.password == password
+      session[:id] = user.id
       return erb(:redirect)
     else
       return erb(:failure)
@@ -100,7 +101,7 @@ class Application < Sinatra::Base
     new_space.space_name = params[:space_name]
     new_space.description = params[:space_description]
     new_space.price = params[:space_price]
-    new_space.user_id = 1
+    new_space.user_id = session[:id]
     new_space.start_date = params[:start_date]
     new_space.end_date = params[:end_date]
     spaces_repo = SpaceRepository.new
