@@ -43,7 +43,9 @@ class Application < Sinatra::Base
     @user.password = params[:password]
 
     repo.create(@user)
-    
+    repo =  UserRepository.new
+    user = repo.find_by_username(@user.username)
+    session[:id] = user.id
     return erb(:redirect)
   end
 
@@ -76,7 +78,7 @@ class Application < Sinatra::Base
     booking.booking_date = params[:booking_date]
     booking.user_id = params[:user_id]
     booking_repo.create(booking)
-    return erb(:book_added)
+    return erb(:redirect)
   end
   
   get '/spaces/:id' do
@@ -107,7 +109,7 @@ class Application < Sinatra::Base
     new_space.end_date = params[:end_date]
     spaces_repo = SpaceRepository.new
     spaces_repo.create(new_space)
-    return erb(:space_added)
+    return erb(:redirect)
   end
 
   get '/requests/:user_id' do

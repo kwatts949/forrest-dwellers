@@ -1,5 +1,9 @@
-body {
+* {
     font-family: 'Old Standard TT', serif;
+}
+
+body {
+    margin: 0;
 }
 
 form {
@@ -44,10 +48,7 @@ button:hover {
     box-sizing: border-box;
 }
 
-body { 
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
+
 
 header {
   display: flex;
@@ -195,5 +196,6 @@ a {
 .background {
     background-image: url("forrest_gump_page.jpeg");
     max-width: 100%;
-    margin: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
