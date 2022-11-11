@@ -11,7 +11,7 @@
     </div>
     <nav>
       <a class="active" href="/spaces">Spaces</a>
-      <a href="/requests/1">Requests</a>
+      <a href="/requests/<%=session[:id]%>">Requests</a>
       <a href="/">Sign out</a>
     </nav>
   </header>
@@ -27,9 +27,9 @@
           <input type="submit" value="Add space"/>
         </form>
         <form class="spaces-form" name="dates" action="/spaces/search" method="GET">
-          <label>Avalible from:</label>
+          <label>Available from:</label>
           <input type="date" name="start_date" min='<%=@today%>'/>
-          <label>Avalible to:</label>
+          <label>Available to:</label>
           <input type="date" name="end_date" min='<%=@tomorrow%>'/>
           <input type="submit" value="Check"/>
         </form>
