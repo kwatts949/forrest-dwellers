@@ -83,7 +83,8 @@ class Application < Sinatra::Base
     space_id = params[:id]
     spaces_repo = SpaceRepository.new
     @space = spaces_repo.find(space_id)
-    avalible = avalible_days(@space.start_date, @space.end_date)
+    start_date, end_date = validate_date(@space.start_date, @space.end_date)
+    avalible = avalible_days(start_date, end_date)
     booking_repo = BookingRepository.new
     unavalible = booking_repo.find_booked_dates(space_id)
     @days = avalible - unavalible
@@ -136,7 +137,6 @@ class Application < Sinatra::Base
         date2[0].to_i >= date1[0].to_i)
       date1, date2 = date2, date1
     end
-    return date1, date2
+    return date1.join('-'), date2.join('-')
   end
-
 end
